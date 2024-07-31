@@ -1,0 +1,76 @@
+:root {
+    --lightgreen: #81D959;
+    --green: #67ae47;
+    --lightgrey:
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+button {
+    background-color: var(--lightgreen);
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+.flex-select {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.flex-select section {
+    flex: 1;
+    min-height: 200px;
+    background-color: rgb(236, 236, 236);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (max-width: 768px) {
+    .flex-select {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+}

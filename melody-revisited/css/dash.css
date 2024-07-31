@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1em;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+main {
+    padding: 2em;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    /* flex-wrap: wrap; */
+    margin-bottom: 2em;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+    width: 23%;
+    min-width: 200px;
+}
+
+.card h3 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+}
+
+.card p {
+    font-size: 2em;
+    margin: 0.5em 0;
+    color: #007BFF;
+}
+
+.charts {
+    display: flex;
+    justify-content: space-around;
+    /* flex-wrap: wrap; */
+}
+
+.chart {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 1em;
+    padding: 1em;
+    width: 45%;
+    min-width: 300px;
+}
+
+.chart h3 {
+    text-align: center;
+}
+
+
+/* Columns and Rows */
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
