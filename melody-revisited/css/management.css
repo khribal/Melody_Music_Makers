@@ -4,38 +4,6 @@
     --lightgrey:
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #e9ecef;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    width: 80%;
-    max-width: 1200px;
-    min-height: 100vh;
-    margin: 20px auto;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-h1 {
-    color: #343a40;
-    font-size: 2.5em;
-}
-
-p {
-    color: #6c757d;
-    font-size: 1.1em;
-}
-
-
 .options {
     display: flex;
     justify-content: center;

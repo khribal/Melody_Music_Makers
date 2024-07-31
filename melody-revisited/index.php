@@ -9,26 +9,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Favicon --> 
-    <link rel="apple-touch-icon" sizes="180x180" href="https://cgi.luddy.indiana.edu/~klhribal/melody-revisited/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://cgi.luddy.indiana.edu/~klhribal/melody-revisited/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://cgi.luddy.indiana.edu/~klhribal/melody-revisited/favicon/favicon-16x16.png">
-    <link rel="manifest" href="https://cgi.luddy.indiana.edu/~klhribal/melody-revisited/favicon/site.webmanifest">
-    <link rel="mask-icon" href="https://cgi.luddy.indiana.edu/~klhribal/melody-revisited/favicon/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="https://cgi.luddy.indiana.edu/~klhribal/melody-revisited/favicon/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="https://cgi.luddy.indiana.edu/~klhribal/melody-revisited/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-    
     <title>Music Store Analytics</title>
-
-    <!-- Font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- CSS --> 
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/management.css">
-    <link rel="stylesheet" href="./css/header.css">
+    <?php include('./includes/components/head.php'); ?>
+  
 </head>
 
 <body>
@@ -46,7 +29,7 @@
         </div>
         <nav class="nav" id="navBar">
             <a href="./index.php">Home</a>
-            <a href="./analytics.php">Management</a>
+            <a href="./management.php">Management</a>
             <a href="analytics.php">Analytics</a>
         </nav>
     </header>
@@ -83,12 +66,12 @@
                 <div class="flex-select">
                 <section id="students">
                     <h2>New Student</h2>
-                    <button onclick="window.location.href='manage-students.php'">Add New Student</button>
+                    <button onclick="window.location.href='new-students.php'">Add New Student</button>
                 </section>
 
                 <section id="rentals">
                     <h2>New Rental</h2>
-                    <button onclick="window.location.href='manage-rentals.php'">View/Update Students</button>
+                    <button onclick="window.location.href='new-rentals.php'">Add New Rental</button>
                 </section>
             </div>
         

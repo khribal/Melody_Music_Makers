@@ -17,13 +17,15 @@ create table students(
     fname varchar(50), 
     lname varchar(50), 
     dob date,
-    phone varchar(50), 
+    phone varchar(14), 
     primary key (id)
 );
 
 create table instruments(
     id int not null AUTO_INCREMENT,
     instrument_type varchar(50),
+    brand varchar(50),
+    condition varchar(50),
     instrument_family varchar(50),
     rented tinyint,
     primary key (id)
@@ -140,17 +142,17 @@ INSERT INTO students (id, fname, lname, dob, phone) VALUES
 (9, 'Ethan', 'Moore', '2008-09-12', 9012345678),
 (10, 'Ava', 'Taylor', '2009-10-22', 1023456789);
 
-INSERT INTO instruments (id, instrument_type, instrument_family, rented) VALUES
-(1, 'Guitar', 'String', 0),
-(2, 'Piano', 'Keyboard', 1),
-(3, 'Drum Kit', 'Percussion', 0),
-(4, 'Violin', 'String', 1),
-(5, 'Flute', 'Wind', 0),
-(6, 'Saxophone', 'Wind', 1),
-(7, 'Trumpet', 'Brass', 0),
-(8, 'Clarinet', 'Woodwind', 1),
-(9, 'Trombone', 'Brass', 0),
-(10, 'Cello', 'String', 1);
+INSERT INTO instruments (id, instrument_type, brand, condition, instrument_family, rented) VALUES
+(1, 'Guitar', 'String', 'Yamaha', 'Like new', 0),
+(2, 'Piano', 'Keyboard', 'Gibson', 'Good', 1),
+(3, 'Drum Kit', 'Percussion', 'Yamaha', 'Good', 0),
+(4, 'Violin', 'String', 'Fender', 'Good', 1),
+(5, 'Flute', 'Wind', 'Steinway', 'Fair', 0),
+(6, 'Saxophone', 'Wind', 'Roland', 'Good', 1),
+(7, 'Trumpet', 'Brass', 'Steinway', 'Like new', 0),
+(8, 'Clarinet', 'Woodwind', 'C.F. Martin', 'New', 1),
+(9, 'Trombone', 'Brass', 'Yamaha', 'New', 0),
+(10, 'Cello', 'String', 'Yamaha', 'Like new', 1);
 
 INSERT INTO rates (id, instrumentID, rate) VALUES
 (1, 1, 15),

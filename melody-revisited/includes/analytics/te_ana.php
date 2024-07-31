@@ -1,5 +1,5 @@
 <?php 
-//INSTRUCTOR ANALYTICS
+//INSTRUCTOR (TEACHER) ANALYTICS
 
 
 $con = mysqli_connect("db.luddy.indiana.edu","i308s23_team32","my+sql=i308s23_team32", "i308s23_team32");
