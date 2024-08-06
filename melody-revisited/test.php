@@ -1,4 +1,6 @@
-<?php include 'in_analytics.php'; ?>
+<?php 
+include './includes/analytics/in_ana.php'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 

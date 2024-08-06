@@ -14,7 +14,7 @@
         <header>
             <div>
                 <img src="img/cute_logo.png" alt="logo">
-                <h1>Melody's Music Store</h1>
+                <h1>Melody's Music</h1>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
@@ -37,6 +37,10 @@
                 <h2>Student Management</h2>
                 <p>View/edit students and add new student</p>
             </div>
+            <div class="option" onclick="location.href='instructors.php'">
+                <h2>Instructor Management</h2>
+                <p>View/edit instructors and add new instructor</p>
+            </div>
         </div>
         <div class="info-section">
             <h2>Welcome to the Management Dashboard</h2>
@@ -44,11 +48,11 @@
             <p>Use the buttons above to access the instrument and student management sections. You can also find various reports and logs to analyze your rentals and student performance.</p>
             <p>Stay organized and make informed decisions to enhance your music program!</p>
         </div>
-
-        <footer>
-            <p>&copy; 2024 Your Company Name. All rights reserved.</p>
-        </footer>
     </div>
+
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
 
     <script src="./js/nav.js"></script>
 

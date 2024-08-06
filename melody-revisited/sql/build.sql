@@ -25,7 +25,7 @@ create table instruments(
     id int not null AUTO_INCREMENT,
     instrument_type varchar(50),
     brand varchar(50),
-    condition varchar(50),
+    in_condition varchar(50),
     instrument_family varchar(50),
     rented tinyint,
     primary key (id)
@@ -142,7 +142,7 @@ INSERT INTO students (id, fname, lname, dob, phone) VALUES
 (9, 'Ethan', 'Moore', '2008-09-12', 9012345678),
 (10, 'Ava', 'Taylor', '2009-10-22', 1023456789);
 
-INSERT INTO instruments (id, instrument_type, brand, condition, instrument_family, rented) VALUES
+INSERT INTO instruments (id, instrument_type, instrument_family, brand, in_condition, rented) VALUES
 (1, 'Guitar', 'String', 'Yamaha', 'Like new', 0),
 (2, 'Piano', 'Keyboard', 'Gibson', 'Good', 1),
 (3, 'Drum Kit', 'Percussion', 'Yamaha', 'Good', 0),

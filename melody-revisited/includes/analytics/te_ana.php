@@ -1,6 +1,8 @@
-<?php 
-//INSTRUCTOR (TEACHER) ANALYTICS
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
+// INSTRUCTOR (TEACHER) ANALYTICS
 
 $con = mysqli_connect("db.luddy.indiana.edu","i308s23_team32","my+sql=i308s23_team32", "i308s23_team32");
 if (!$con){
@@ -11,8 +13,8 @@ if (!$con){
 $numInstructors_query = "SELECT COUNT(id) as count FROM teachers";
 $numFree_query = "SELECT COUNT(tutorID) as count FROM freelances";
 $numEmp_query = "SELECT COUNT(tutorID) as count FROM employees";
-$rateFree_query = "SELECT AVG(rate) as avg_rate FROM freelances";
-$rateEmp_query = "SELECT AVG(rate) as avg_rate FROM employees";
+$rateFree_query = "SELECT round(AVG(rate), 1) as avg_rate FROM freelances";
+$rateEmp_query = "SELECT round(AVG(rate), 1) as avg_rate FROM employees";
 $popularLocation_query = "SELECT lo.street, COUNT(sl.lessonID) as lesson_count
                           FROM lessons as l 
                           JOIN student_lessons as sl ON sl.lessonID = l.id
@@ -25,12 +27,29 @@ $mostLessons_query = "SELECT teacherID, COUNT(id) as lesson_count
                       GROUP BY teacherID
                       ORDER BY lesson_count DESC
                       LIMIT 1";
-$mostStudents_query = "SELECT l.id as lesson_id, COUNT(sl.lessonID) as student_count
+$mostStudents_query = "SELECT CONCAT(t.fname, ' ', t.lname) as Teacher, COUNT(sl.lessonID) as 'Number of Students'
                        FROM lessons as l 
                        JOIN student_lessons as sl ON sl.lessonID = l.id
-                       GROUP BY l.id
-                       ORDER BY student_count DESC
-                       LIMIT 1";
+                       JOIN teachers as t ON l.teacherID=t.id
+                       GROUP BY l.teacherID
+                       ORDER BY COUNT(sl.lessonID) DESC
+                       LIMIT 3";
+
+$activeTeacher_query = "select count(distinct teacherID)
+from lessons 
+where month(current_date)=month(lesson_date)
+and
+year(current_date)=year(lesson_date)";
+
+$notActive_query = "select count(distinct teacherID)
+from lessons 
+where teacherID not in 
+(select distinct teacherID
+from lessons
+where month(current_date)=month(lesson_date)
+and
+year(current_date)=year(lesson_date)
+)";
 
 // Graphed Queries
 $mostPopularMonth_query = "SELECT MONTH(lesson_date) as month, COUNT(MONTH(lesson_date)) as frequency
@@ -41,17 +60,28 @@ $peakTime_query = "SELECT TIME_FORMAT(lesson_time, '%l %p') as time, COUNT(*) as
                    GROUP BY time
                    ORDER BY lesson_time";
 
-// Fetch results
-$numInstructors_result = mysqli_query($con, $numInstructors_query);
-$numFree_result = mysqli_query($con, $numFree_query);
-$numEmp_result = mysqli_query($con, $numEmp_query);
-$rateFree_result = mysqli_query($con, $rateFree_query);
-$rateEmp_result = mysqli_query($con, $rateEmp_query);
-$popularLocation_result = mysqli_query($con, $popularLocation_query);
-$mostLessons_result = mysqli_query($con, $mostLessons_query);
-$mostStudents_result = mysqli_query($con, $mostStudents_query);
-$mostPopularMonth_result = mysqli_query($con, $mostPopularMonth_query);
-$peakTime_result = mysqli_query($con, $peakTime_query);
+// Fetch results and check for errors
+$queries = [
+    'numInstructors_result' => $numInstructors_query,
+    'numFree_result' => $numFree_query,
+    'numEmp_result' => $numEmp_query,
+    'rateFree_result' => $rateFree_query,
+    'rateEmp_result' => $rateEmp_query,
+    'popularLocation_result' => $popularLocation_query,
+    'mostLessons_result' => $mostLessons_query,
+    'mostStudents_result' => $mostStudents_query,
+    'mostPopularMonth_result' => $mostPopularMonth_query,
+    'peakTime_result' => $peakTime_query,
+    'active_result' => $activeTeacher_query,
+    'notActive_result' => $notActive_query,
+];
+
+foreach ($queries as $result_var => $query) {
+    $$result_var = mysqli_query($con, $query);
+    if (!$$result_var) {
+        die("Error with $result_var: " . mysqli_error($con));
+    }
+}
 
 // Store results in vars
 $numInstructors = mysqli_fetch_assoc($numInstructors_result)['count'];
@@ -59,6 +89,9 @@ $numFree = mysqli_fetch_assoc($numFree_result)['count'];
 $numEmp = mysqli_fetch_assoc($numEmp_result)['count'];
 $rateFree = mysqli_fetch_assoc($rateFree_result)['avg_rate'];
 $rateEmp = mysqli_fetch_assoc($rateEmp_result)['avg_rate'];
+
+$activeTeacher = mysqli_fetch_assoc($active_result)['count(distinct teacherID)'];
+$notActive = mysqli_fetch_assoc($notActive_result)['count(distinct teacherID)'];
 
 $popularLocation = mysqli_fetch_assoc($popularLocation_result);
 $street = $popularLocation['street'];
@@ -68,9 +101,10 @@ $mostLessons = mysqli_fetch_assoc($mostLessons_result);
 $teacherID = $mostLessons['teacherID'];
 $numLessonsTaught = $mostLessons['lesson_count'];
 
-$mostStudents = mysqli_fetch_assoc($mostStudents_result);
-$lessonID = $mostStudents['lesson_id'];
-$numStudentsTaught = $mostStudents['student_count'];
+$mostStudents = [];
+while ($row = mysqli_fetch_assoc($mostStudents_result)) {
+    $mostStudents[] = $row;
+}
 
 $mostPopularMonths = [];
 while ($row = mysqli_fetch_assoc($mostPopularMonth_result)) {

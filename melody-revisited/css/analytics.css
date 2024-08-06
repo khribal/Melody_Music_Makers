@@ -1,0 +1,151 @@
+:root {
+    --dash1: #cdf0bd;
+    --dash2: #d9f4cd;
+    --dash3: #f2fbee;
+    --primary-color: #333;
+    --secondary-color: #555;
+    --background-color: #f9f9f9;
+    --highlight-color: #007bff;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --padding: 20px;
+    --margin: 20px;
+}
+
+.dashboard {
+    padding: var(--padding);
+    margin-bottom: var(--margin);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+#instruments {
+    background-color: var(--dash1);
+}
+
+#instructors {
+    background-color: var(--dash2);
+}
+
+#students {
+    background-color: var(--dash3);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: var(--margin);
+}
+
+.snapshot-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--margin);
+    margin-bottom: var(--margin);
+}
+
+.snapshot {
+    flex: 1 1 200px;
+    background-color: white;
+    padding: var(--padding);
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 18px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.snapshot2 {
+    flex: 1 1 200px;
+    padding: var(--padding);
+    text-align: center;
+    font-size: 18px;
+}
+
+.graph-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.graph {
+    flex: 1 1 100%;
+    /* Make sure each graph takes up 100% width of its container */
+    min-width: 300px;
+    /* Minimum width to ensure readability */
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    /* Include padding and border in the width and height */
+}
+
+
+
+.table-container {
+    margin-top: var(--margin);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--margin);
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: var(--padding);
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    background-color: white;
+}
+
+footer {
+    text-align: center;
+    padding: var(--padding);
+    margin-top: var(--margin);
+    border-top: 1px solid #ddd;
+    color: var(--secondary-color);
+}
+
+/*Mobile scroll for the table */
+
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--margin);
+}
+
+th,
+td {
+    padding: var(--padding);
+    text-align: left;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+
+    th,
+    td {
+        padding: 10px 5px;
+    }
+}

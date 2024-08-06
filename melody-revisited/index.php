@@ -1,6 +1,6 @@
 <?php 
-    include 'in_analytics.php'; 
-    include 'st_analytics.php';   
+    include './includes/analytics/in_ana.php'; 
+    include './includes/analytics/st_ana.php';   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +22,7 @@
     <header>
         <div>
             <img src="img/cute_logo.png" alt="logo">
-            <h1>Melody's Music Store</h1>
+            <h1>Melody's Music</h1>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
@@ -66,7 +66,7 @@
                 <div class="flex-select">
                 <section id="students">
                     <h2>New Student</h2>
-                    <button onclick="window.location.href='new-students.php'">Add New Student</button>
+                    <button onclick="window.location.href='./forms/new-students.php'">Add New Student</button>
                 </section>
 
                 <section id="rentals">

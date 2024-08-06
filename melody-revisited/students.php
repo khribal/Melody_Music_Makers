@@ -33,9 +33,15 @@
             <div class="actions">
                 <button onclick="location.href='add_student.html'">Add New Student</button>
             </div>
+
             <div class="student-list">
-                <h3>Current Students</h3>
-                <table>
+            <h3>Current Students</h3>
+            <label for="students">Search for a student:</label>
+            <input type="text" id="search" name="students" oninput="search()">
+                <div id="tableContainer">
+                    <?php echo $studentTable; ?>
+                </div>
+                <!-- <table>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -45,7 +51,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Sample student data -->
                         <tr>
                             <td>John Doe</td>
                             <td>Piano</td>
@@ -56,7 +61,7 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </table> -->
             </div>
         </main>
 
@@ -66,7 +71,33 @@
     </div>
 
     <script src="./js/nav.js"></script>
-    <script src="./js/student_management.js"></script>
+    <script>
+        function search() {
+            //Get value from dropdown
+            const selectedValue = document.getElementById('search').value;
+
+            //AJAX Request
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST', 'processing/student_form.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Update the tableContainer with the response
+                    document.getElementById('tableContainer').innerHTML = xhr.responseText;
+                } else {
+                    console.error('Error fetching data');
+                }
+            };
+
+            xhr.send('search_name=' + encodeURIComponent(selectedValue));
+        }
+
+        window.onload = function() {
+            search();
+        };
+    </script>
 </body>
 
 </html>
