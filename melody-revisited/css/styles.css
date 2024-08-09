@@ -108,6 +108,16 @@ footer {
     color: #6c757d;
 }
 
+/*Success flag for forms */
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 0.25rem;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: center;
+}
 
 @media (max-width: 768px) {
     .flex-select {

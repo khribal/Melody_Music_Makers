@@ -37,13 +37,14 @@
             <div class="student-list">
 
             <h3>Current instructors</h3>
-            <label for="instructors">Search for a student:</label>
+            <h4>Freelance</h4>
+            <label for="instructors">Search for an instructor:</label>
             <input type="text" id="search" name="instructors" oninput="search()">
                 <div id="tableContainer"></div>
 
             </div>
-
-            <label for="instructors2">Search for a student:</label>
+            <h4>Employees</h4>
+            <label for="instructors2">Search for an instructor:</label>
             <input type="text" id="search2" name="instructors2" oninput="search2()">
             <div id="tableContainer2"></div>
 

@@ -52,7 +52,6 @@
                 </div>
                 <div class="graph-container">
                     <div id="instrument-graph1" class="graph">Graph 1</div>
-                    <div id="instrument-graph2" class="graph">Graph 2</div>
                 </div>
             
                 <div class="snapshot-container">
@@ -113,18 +112,11 @@
                     <div class="snapshot">Inactive Instructors: <?php echo $notActive; ?></div>
                 </div>
 
-                <div class="graph-container">
-                    <div id="instructor-graph1" class="graph">Graph 1</div>
-                    <div id="instructor-graph2" class="graph">Graph 2</div>
-                </div>
-
                 <div class="snapshot-container">
                     <div class="snapshot">Avg Rate Employee Tutors: <span><?php echo $rateEmp; ?></span></div>
                     <div class="snapshot">Avg Rate Freelance Tutors: <span><?php echo $rateFree; ?></span></div>
                 </div>
                 
-
-
                 <div class="table-container">
                     <h3>Instructor Details</h3>
                     <table>
@@ -159,8 +151,7 @@
                     <div class="snapshot">Number of New Students this month: <?php echo $firstLessonDate; ?></div>
                 </div>
                 <div class="graph-container">
-                    <div id="student-graph1" class="graph">Graph 1</div>
-                    <div id="student-graph2" class="graph">Graph 2</div>
+                    <div id="instrument-graph2" class="graph">Graph 2</div> 
                 </div>
             </section>
         </main>
@@ -173,6 +164,10 @@
     <!-- d3 js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="./js/nav.js"></script>
+    <script>
+        const instrumentData = <?php echo $mostPopularInst_json; ?>;
+        const studentData = <?php echo $lessonByMonth_json; ?>;
+    </script>
     <script src="./js/analytics.js"></script>
 </body>
 

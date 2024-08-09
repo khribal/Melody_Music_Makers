@@ -18,7 +18,7 @@
     
 
     <div class="container">
-
+    
     <header>
         <div>
             <img src="img/cute_logo.png" alt="logo">
@@ -66,7 +66,7 @@
                 <div class="flex-select">
                 <section id="students">
                     <h2>New Student</h2>
-                    <button onclick="window.location.href='./forms/new-students.php'">Add New Student</button>
+                    <button onclick="window.location.href='./forms/new-student.php'">Add New Student</button>
                 </section>
 
                 <section id="rentals">
@@ -82,6 +82,7 @@
     </footer>
 
     <script src="./js/nav.js"></script>
+    <script src="./js/check_success.js"></script>
 </body>
 
 </html>

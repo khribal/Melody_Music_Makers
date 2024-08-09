@@ -1,0 +1,25 @@
+.quick-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.link {
+    background-color: rgb(229, 229, 229);
+    padding: 2em 3em;
+    border-radius: 5px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quick-links a:link,
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.quick-links a:hover {
+    opacity: 50%;
+}

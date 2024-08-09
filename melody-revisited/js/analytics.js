@@ -1,11 +1,11 @@
 function createBarChart(containerId, data) {
     const container = d3.select(containerId);
+    const margin = { top: 20, right: 30, bottom: 40, left: 40 };
 
     function updateChart() {
         const containerWidth = container.node().getBoundingClientRect().width;
         const containerHeight = 300; // Fixed height for simplicity
 
-        const margin = { top: 20, right: 30, bottom: 40, left: 40 };
         const width = containerWidth - margin.left - margin.right;
         const height = containerHeight - margin.top - margin.bottom;
 
@@ -39,8 +39,10 @@ function createBarChart(containerId, data) {
 
         g.append("g")
             .attr("class", "y-axis")
-            .call(d3.axisLeft(y).ticks(5));
-
+            .call(d3.axisLeft(y)
+                .ticks(d3.max(data, d => d.count))  // Ensure sufficient ticks
+                .tickFormat(d3.format("d"))  // Ensure integer formatting
+            );
         g.selectAll(".bar")
             .data(data)
             .enter().append("rect")
@@ -49,7 +51,7 @@ function createBarChart(containerId, data) {
             .attr("y", d => y(d.count))
             .attr("width", x.bandwidth())
             .attr("height", d => height - y(d.count))
-            .attr("fill", "steelblue");
+            .attr("fill", "#67ae47");
     }
 
     // Initial chart creation
@@ -59,22 +61,16 @@ function createBarChart(containerId, data) {
     window.addEventListener("resize", updateChart);
 }
 
-// Data for Instrument Graph 1
-const instrumentData1 = [
-    { instrument: "Guitar", count: 40 },
-    { instrument: "Piano", count: 30 },
-    { instrument: "Violin", count: 20 },
-    { instrument: "Drums", count: 10 }
-];
+const convertedData = instrumentData.map(d => ({
+    instrument: d.Instrument,
+    count: parseInt(d.Rented, 10)  // Convert the "Rented" value to an integer
+}));
 
-// Data for Instrument Graph 2
-const instrumentData2 = [
-    { instrument: "Guitar", count: 40 },
-    { instrument: "Piano", count: 30 },
-    { instrument: "Violin", count: 20 },
-    { instrument: "Drums", count: 10 }
-];
+const convertedData2 = studentData.map(d => ({
+    instrument: d.lesson_month,
+    count: parseInt(d.num_students, 10)  // Convert the "Rented" value to an integer
+}));
 
 // Create bar charts
-createBarChart("#instrument-graph1", instrumentData1);
-createBarChart("#instrument-graph2", instrumentData2);
+createBarChart("#instrument-graph1", convertedData);
+createBarChart("#instrument-graph2", convertedData2);

@@ -42,7 +42,7 @@
         </header>
         <main>
             <div class="form-header">
-                <h2>Add a Student</h2>
+                <h2>Add an instructor</h2>
                 <p>Please fill out the form below to add a new student to the system.</p>
             </div>
             <form action="s_process.php" class="styled-form">

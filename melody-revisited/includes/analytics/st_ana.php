@@ -55,6 +55,19 @@ WHERE MONTH(first_lessons.first_lesson_date) = MONTH(CURDATE())
 AND YEAR(first_lessons.first_lesson_date) = YEAR(CURDATE());
 ";
 
+$lessonByMonth_query = "SELECT DATE_FORMAT(first_lessons.first_lesson_date,'%M') as lesson_month, COUNT(*) as num_students
+FROM (
+    SELECT sl.studentID, MIN(l.lesson_date) as first_lesson_date
+    FROM student_lessons sl
+    JOIN lessons l ON sl.lessonID = l.id
+    GROUP BY sl.studentID
+) as first_lessons
+WHERE YEAR(first_lessons.first_lesson_date) = YEAR(CURDATE())
+GROUP BY 
+    MONTH(first_lessons.first_lesson_date)
+ORDER BY 
+    lesson_month";
+
 //Result arrays
 $numstudents_result = mysqli_query($con, $numstudents_query);
 $numteacher_result = mysqli_query($con, $numteacher_query);
@@ -65,6 +78,7 @@ $newStudentsThisMonth_result = mysqli_query($con, $newStudentsThisMonth_query);
 $numActive_result = mysqli_query($con, $numActive_query);
 $notActive_result = mysqli_query($con, $notActive_query);
 $firstLessonDate_result = mysqli_query($con, $firstLessonDate_query);
+$lessonByMonth_result = mysqli_query($con, $lessonByMonth_query);
 
 
 // Fetch results and check for errors
@@ -78,6 +92,7 @@ $queries = [
     'numActive_result' => $numActive_query,
     'notActive_result' => $notActive_query,
     'firstLessonDate_result' => $firstLessonDate_query,
+    'lessonByMonth_result' => $lessonByMonth_query,
 ];
 
 foreach ($queries as $result_var => $query) {
@@ -99,6 +114,12 @@ $numActive = mysqli_fetch_assoc($numActive_result)['num_active'];
 $firstLessonDate = mysqli_fetch_assoc($firstLessonDate_result)['num_students'];
 
 
+$lessonByMonth = [];
+while ($row = mysqli_fetch_assoc($lessonByMonth_result)) {
+    $lessonByMonth[] = $row;
+}
+
+$lessonByMonth_json = json_encode($lessonByMonth);
 
 // Free results
 mysqli_free_result($numstudents_result);

@@ -28,7 +28,7 @@ group by i.instrument_type
 order by count(r.instrumentID) asc
 limit 5";
 
-$mostPopularInst_query = "select i.instrument_type as Instrument, count(r.instrumentID) as 'Number Rented'
+$mostPopularInst_query = "select i.instrument_type as Instrument, count(r.instrumentID) as 'Rented'
 from rentals as r 
 join instruments as i on r.instrumentID=i.id
 group by i.instrument_type
@@ -65,8 +65,6 @@ foreach ($queries as $result_var => $query) {
 }
 
 //Store results in vars
-//Popout data
-
 $numRented = mysqli_fetch_assoc($numRented_result)['count(id)'];
 $numAvail = mysqli_fetch_assoc($numAvailable_result)['count(id)'];
 $numInstr = mysqli_fetch_assoc($totalInstr_result)['count(id)'];
@@ -87,6 +85,12 @@ $mostPopularInst = [];
 while ($row = mysqli_fetch_assoc($mostPopularInst_result)) {
     $mostPopularInst[] = $row;
 }
+
+foreach ($data as &$item) {
+    $item['Rented'] = (int)$item['Rented'];  // Cast to integer
+}
+
+$mostPopularInst_json = json_encode($mostPopularInst);
 
 $leastPopular = [];
 while ($row = mysqli_fetch_assoc($leastPopular_result)) {
