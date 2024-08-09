@@ -33,7 +33,7 @@
         <main>
             <h2>Instrument Management</h2>
             <div class="actions">
-                <button onclick="location.href='add_instrument.html'">Add New Instrument</button>
+                <button onclick="location.href='./forms/new-instrument.php'">Add New Instrument</button>
             </div>
 
             <label for="instruments">Choose an instrument:</label>

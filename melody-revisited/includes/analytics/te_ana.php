@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 // INSTRUCTOR (TEACHER) ANALYTICS
 
-include('../includes/db_con/db.php');
+include('/nfs/nfs2/home/klhribal/cgi-pub/melody-revisited/includes/db_con/db.php');
 
 // Create connection
 $con = new mysqli($servername, $username, $password, $dbname);

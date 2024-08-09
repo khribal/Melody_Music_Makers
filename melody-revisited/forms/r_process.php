@@ -10,14 +10,14 @@ if ($con->connect_error) {
 }
 
 // Collect form data
-$firstName = $_POST['fname'];
-$lastName = $_POST['lname'];
-$dob = $_POST['dob'];
-$phone = $_POST['phone'];
+$instrumentType = $_POST['instrument_type'];
+$brand = $_POST['brand'];
+$inCondition = $_POST['in_condition'];
+$instrumentFamily = $_POST['instrument_family'];
 
 // Prepare and bind
-$stmt = $con->prepare("INSERT INTO students (fname, lname, dob, phone) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $firstName, $lastName, $dob, $phone);
+$stmt = $con->prepare("INSERT INTO instruments (instrument_type, brand, in_condition, instrument_family) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $instrumentType, $brand, $inCondition, $instrumentFamily);
 
 // Execute the statement
 if ($stmt->execute()) {
@@ -25,15 +25,10 @@ if ($stmt->execute()) {
     $stmt->close();
     $con->close();
 
+    // Redirect with a success message
     header('Location: ../index.php?message=success');
     exit();
 } else {
-    $stmt->close();
-    $con->close();
-
-    // Show error message
     echo "Error: " . $stmt->error;
 }
-
-
 ?>

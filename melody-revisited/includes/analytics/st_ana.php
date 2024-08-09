@@ -1,6 +1,9 @@
 <?php 
 //STUDENT ANALYTICS
-include('../includes/db_con/db.php');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+include('/nfs/nfs2/home/klhribal/cgi-pub/melody-revisited/includes/db_con/db.php');
 
 // Create connection
 $con = new mysqli($servername, $username, $password, $dbname);

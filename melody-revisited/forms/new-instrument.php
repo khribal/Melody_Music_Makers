@@ -42,28 +42,34 @@
         </header>
         <main>
             <div class="form-header">
-                <h2>Add an instructor</h2>
-                <p>Please fill out the form below to add a new student to the system.</p>
+                <h2>Add an Instrument</h2>
+                <p>Please fill out the form below to add a new instrument to the system.</p>
             </div>
-            <form action="s_process.php" class="styled-form">
+            <form action="r_process.php" method="POST" class="styled-form">
                 <div class="form-group">
-                    <label for="fname">Student's first name:</label>
-                    <input type="text" name="fname" id="fname">
+                    <label for="instrument_type">Instrument Type:</label>
+                    <input type="text" name="instrument_type" id="instrument_type" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="lname">Student's last name:</label>
-                    <input type="text" name="lname" id="lname">
+                    <label for="brand">Brand:</label>
+                    <input type="text" name="brand" id="brand" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="dob">Student's date of birth:</label>
-                    <input type="date" name="dob" id="dob">
+                    <label for="in_condition">Condition:</label>
+                    <select name="in_condition" id="in_condition" required>
+                        <option value="New">New</option>
+                        <option value="Like New">Like New</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Poor">Poor</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Contact number:</label>
-                    <input type="tel" name="phone" id="phone">
+                    <label for="instrument_family">Instrument Family:</label>
+                    <input type="text" name="instrument_family" id="instrument_family" required>
                 </div>
 
                 <div class="form-group">

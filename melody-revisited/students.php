@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/test.css">
+    <link rel="stylesheet" href="./css/management.css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
         <main>
             <h2>Student Management</h2>
             <div class="actions">
-                <button onclick="location.href='add_student.html'">Add New Student</button>
+                <button onclick="location.href='./forms/new-student.phps'">Add New Student</button>
             </div>
 
             <div class="student-list">

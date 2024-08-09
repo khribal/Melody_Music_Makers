@@ -2,6 +2,7 @@
     include './includes/analytics/in_ana.php'; 
     include './includes/analytics/st_ana.php';   
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,8 +71,8 @@
                 </section>
 
                 <section id="rentals">
-                    <h2>New Rental</h2>
-                    <button onclick="window.location.href='new-rentals.php'">Add New Rental</button>
+                    <h2>New Instrument</h2>
+                    <button onclick="window.location.href='./forms/new-instrument.php'">Add New Rental</button>
                 </section>
             </div>
         

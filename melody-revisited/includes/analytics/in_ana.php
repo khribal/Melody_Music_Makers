@@ -1,6 +1,8 @@
 <?php 
 //INSTRUMENT ANALYTICS
-include('../includes/db_con/db.php');
+
+include('/nfs/nfs2/home/klhribal/cgi-pub/melody-revisited/includes/db_con/db.php');
+
 
 // Create connection
 $con = new mysqli($servername, $username, $password, $dbname);
@@ -90,9 +92,6 @@ while ($row = mysqli_fetch_assoc($mostPopularInst_result)) {
     $mostPopularInst[] = $row;
 }
 
-foreach ($data as &$item) {
-    $item['Rented'] = (int)$item['Rented'];  // Cast to integer
-}
 
 $mostPopularInst_json = json_encode($mostPopularInst);
 
