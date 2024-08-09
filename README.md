@@ -1,5 +1,5 @@
 # Melody_Music_Makers
-n my i308 course, my team and I honed our skills in SQL, HTML, and PHP to develop a dynamic website tailored for business needs. 
+In my i308 course, my team and I honed our skills in SQL, HTML, and PHP to develop a dynamic website tailored for business needs. 
 Our project focused on creating a user-friendly platform for running queries and summarizing vital data. 
 Our mock client, an instrument rental and lessons company owner, provided invaluable insights.
 
