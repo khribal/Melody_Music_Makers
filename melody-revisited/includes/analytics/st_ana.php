@@ -1,9 +1,15 @@
 <?php 
 //STUDENT ANALYTICS
-$con = mysqli_connect("db.luddy.indiana.edu","i308s23_team32","my+sql=i308s23_team32", "i308s23_team32");
-if (!$con){
-    die("Failed to connect to MySQL: " . mysqli_connect_error() . "<br><br>");
+include('../includes/db_con/db.php');
+
+// Create connection
+$con = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
 }
+
 
 //Queries
 $numstudents_query = "select count(id) from students";
